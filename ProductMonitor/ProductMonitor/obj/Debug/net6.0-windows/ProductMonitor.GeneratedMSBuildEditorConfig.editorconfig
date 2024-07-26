@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProductMonitor
-build_property.ProjectDir = D:\src\CSharp_Learn\CSharp-Project\WPF_Project\ProductMonitor\ProductMonitor\
+build_property.ProjectDir = D:\src\CSharp_Learn\CSharp-Project\ProductMonitor-Demo\ProductMonitor\ProductMonitor\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\src\\CSharp_Learn\\CSharp-Project\\WPF_Project\\ProductMonitor\\ProductMonitor\\ProductMonitor.csproj": {}
+    "D:\\src\\CSharp_Learn\\CSharp-Project\\ProductMonitor-Demo\\ProductMonitor\\ProductMonitor\\ProductMonitor.csproj": {}
   },
   "projects": {
-    "D:\\src\\CSharp_Learn\\CSharp-Project\\WPF_Project\\ProductMonitor\\ProductMonitor\\ProductMonitor.csproj": {
+    "D:\\src\\CSharp_Learn\\CSharp-Project\\ProductMonitor-Demo\\ProductMonitor\\ProductMonitor\\ProductMonitor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\src\\CSharp_Learn\\CSharp-Project\\WPF_Project\\ProductMonitor\\ProductMonitor\\ProductMonitor.csproj",
+        "projectUniqueName": "D:\\src\\CSharp_Learn\\CSharp-Project\\ProductMonitor-Demo\\ProductMonitor\\ProductMonitor\\ProductMonitor.csproj",
         "projectName": "ProductMonitor",
-        "projectPath": "D:\\src\\CSharp_Learn\\CSharp-Project\\WPF_Project\\ProductMonitor\\ProductMonitor\\ProductMonitor.csproj",
+        "projectPath": "D:\\src\\CSharp_Learn\\CSharp-Project\\ProductMonitor-Demo\\ProductMonitor\\ProductMonitor\\ProductMonitor.csproj",
         "packagesPath": "C:\\Users\\WXJ\\.nuget\\packages\\",
-        "outputPath": "D:\\src\\CSharp_Learn\\CSharp-Project\\WPF_Project\\ProductMonitor\\ProductMonitor\\obj\\",
+        "outputPath": "D:\\src\\CSharp_Learn\\CSharp-Project\\ProductMonitor-Demo\\ProductMonitor\\ProductMonitor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,12 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "LiveCharts.Wpf": {
+              "target": "Package",
+              "version": "[0.9.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
