@@ -1,12 +1,40 @@
-﻿<UserControl x:Class="ProductMonitor.UserControls.RaderUC"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ProductMonitor.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+﻿<UserControl
+    x:Class="ProductMonitor.UserControls.RaderUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProductMonitor.UserControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid x:Name="LayGrid">
+        <!--  画布  -->
+        <Canvas x:Name="mainCanvas" />
+
+        <!--  4个规则多边形  -->
+        <Polygon
+            x:Name="p1"
+            Stroke="#00F5FF"
+            StrokeThickness="1" />
+        <Polygon
+            x:Name="p2"
+            Stroke="#F0FFF0"
+            StrokeThickness="1" />
+        <Polygon
+            x:Name="p3"
+            Stroke="#FFE4E1"
+            StrokeThickness="1" />
+        <Polygon
+            x:Name="p4"
+            Stroke=" #87CEFA"
+            StrokeThickness="1" />
+
+        <!--  数据多边形  -->
+        <Polygon
+            x:Name="p5"
+            Fill="#FFE4E1"
+            Stroke="#FFFFFF"
+            StrokeThickness="1" />
     </Grid>
 </UserControl>

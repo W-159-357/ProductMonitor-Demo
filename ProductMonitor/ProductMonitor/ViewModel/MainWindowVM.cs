@@ -14,15 +14,18 @@ namespace ProductMonitor.ViewModel
     public class MainWindowVM : INotifyPropertyChanged
     {
         /*
-            monitorUC:      监控用户控件
-            machineCount:   机台总数
-            productCount:   生产计数
-            badCount:       不良计数
-            TimeStr：        时间 小时：分钟
-            DateStr：        日期 年-月-日
-            WeekStr：        星期
-            enviromentList: 环境监控数据
-            alarmList:      报警属性
+            monitorUC:          监控用户控件
+            machineCount:       机台总数
+            productCount:       生产计数
+            badCount:           不良计数
+            TimeStr：           时间 小时：分钟
+            DateStr：           日期 年-月-日
+            WeekStr：           星期
+            enviromentList:     环境监控数据
+            alarmList:          报警属性
+            raderList:          雷达属性
+            stuffOutWorkList:   缺岗员工数据
+            workShopList:       车间属性
          */
         public event PropertyChangedEventHandler? PropertyChanged;
         // 监控用户控件   (定义为 monitorUC  方便进行里氏替换)
@@ -33,6 +36,9 @@ namespace ProductMonitor.ViewModel
         private List<EnviromentModel> enviromentList;
         private List<AlarmModel> alarmList;
         private List<DeviceModel> deviceList;
+        private List<RaderModel> raderList;
+        private List<StuffOutWrokModel> stuffOutWorkList;
+        private List<WorkShopModel> workShopList;
 
         // 视图模型构造函数
         public MainWindowVM()
@@ -66,6 +72,33 @@ namespace ProductMonitor.ViewModel
             deviceList.Add(new DeviceModel { DeviceItem = "振动(mm/s)", Value = 3.8 });
             deviceList.Add(new DeviceModel { DeviceItem = "转速(r/min)", Value = 2600 });
             deviceList.Add(new DeviceModel { DeviceItem = "气压(kpa)", Value = 0.5 });
+            #endregion
+
+            #region 初始化雷达数据
+            raderList = new List<RaderModel>();
+            raderList.Add(new RaderModel { ItemName = "客梯", ItemValue = 31.00 });
+            raderList.Add(new RaderModel { ItemName = "排烟风机", ItemValue = 90.50 });
+            raderList.Add(new RaderModel { ItemName = "稳压设备1", ItemValue = 27.45 });
+            raderList.Add(new RaderModel { ItemName = "稳压设备2", ItemValue = 67.00 });
+            raderList.Add(new RaderModel { ItemName = "喷淋水泵", ItemValue = 72.43 });
+            raderList.Add(new RaderModel { ItemName = "供水机", ItemValue = 35.66 });
+            #endregion
+
+            #region 缺岗员工数据
+            stuffOutWorkList = new List<StuffOutWrokModel>();
+            stuffOutWorkList.Add(new StuffOutWrokModel { StuffName = "王晓婷", Position = "工程师", OutWorkCount = 43 });
+            stuffOutWorkList.Add(new StuffOutWrokModel { StuffName = "张飞", Position = "技术员", OutWorkCount = 19 });
+            stuffOutWorkList.Add(new StuffOutWrokModel { StuffName = "李一如", Position = "技术售后", OutWorkCount = 108 });
+            stuffOutWorkList.Add(new StuffOutWrokModel { StuffName = "张晓峰", Position = "工程师", OutWorkCount = 79 });
+            stuffOutWorkList.Add(new StuffOutWrokModel { StuffName = "王世辉", Position = "技术实施", OutWorkCount = 61 });
+            #endregion
+
+            #region 车间属性数据
+            workShopList = new List<WorkShopModel>();
+            WorkShopList.Add(new WorkShopModel { WorkShopName = "焊接车间", WorkingCount = 56, WaitCount = 27, WrongCount = 7, StopCount = 3 });
+            WorkShopList.Add(new WorkShopModel { WorkShopName = "封装车间", WorkingCount = 48, WaitCount = 19, WrongCount = 10, StopCount = 6 });
+            WorkShopList.Add(new WorkShopModel { WorkShopName = "贴片车间", WorkingCount = 67, WaitCount = 31, WrongCount = 5, StopCount = 4 });
+            WorkShopList.Add(new WorkShopModel { WorkShopName = "生产车间", WorkingCount = 82, WaitCount = 13, WrongCount = 6, StopCount = 2 });
             #endregion
         }
 
@@ -206,9 +239,49 @@ namespace ProductMonitor.ViewModel
         }
         #endregion
 
-        #region 
-
+        #region 雷达数据属性
+        public List<RaderModel> RaderList
+        {
+            get { return raderList; }
+            set
+            {
+                raderList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("RaderList"));
+                }
+            }
+        }
         #endregion
 
+        #region 缺岗员工数据
+        public List<StuffOutWrokModel> StuffOutWorkList
+        {
+            get { return stuffOutWorkList; }
+            set
+            {
+                stuffOutWorkList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("StuffOutWorkList"));
+                }
+            }
+        }
+        #endregion
+
+        #region 车间属性
+        public List<WorkShopModel> WorkShopList
+        {
+            get { return workShopList; }
+            set
+            {
+                workShopList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("WorkShopList"));
+                }
+            }
+        }
+        #endregion
     }
 }

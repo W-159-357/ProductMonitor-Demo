@@ -55,3 +55,4 @@ D:\src\CSharp_Learn\CSharp-Project\ProductMonitor-Demo\ProductMonitor\ProductMon
 D:\src\CSharp_Learn\CSharp-Project\ProductMonitor-Demo\ProductMonitor\ProductMonitor\obj\Debug\net6.0-windows\ProductM.DEAEF65F.Up2Date
 D:\src\CSharp_Learn\CSharp-Project\ProductMonitor-Demo\ProductMonitor\ProductMonitor\obj\Debug\net6.0-windows\UserControls\RaderUC.g.cs
 D:\src\CSharp_Learn\CSharp-Project\ProductMonitor-Demo\ProductMonitor\ProductMonitor\obj\Debug\net6.0-windows\UserControls\RaderUC.baml
+D:\src\CSharp_Learn\CSharp-Project\ProductMonitor-Demo\ProductMonitor\ProductMonitor\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs

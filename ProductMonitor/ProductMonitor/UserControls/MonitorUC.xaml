@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:ProductMonitor.UserControls"
     xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rader="clr-namespace:ProductMonitor.UserControls"
     Width="1200"
     Height="675"
     d:DesignHeight="675"
@@ -598,9 +599,210 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </GroupBox>
-                <GroupBox Header="能耗" />
-                <GroupBox Header="人力" />
+                <GroupBox Header="能耗">
+                    <rader:RaderUC ItemSource="{Binding RaderList}" />
+                </GroupBox>
+                <GroupBox Header="人力">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--  第一列  -->
+                        <StackPanel Margin="0,20,0,0" VerticalAlignment="Center">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="22"
+                                Foreground="#99ffffff"
+                                Text="912" />
+                            <TextBlock
+                                Margin="0,10,0,0"
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#99ffffff"
+                                Text="在职在岗" />
+                        </StackPanel>
+
+                        <!--  第二列  -->
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <!--  第一行  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="13"
+                                Foreground="#00FFFF"
+                                Text="缺岗统计" />
+                            <!--  第二行  -->
+                            <ItemsControl Grid.Row="1" ItemsSource="{Binding StuffOutWorkList}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="auto" Height="22">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!--  第一列  -->
+                                            <Border
+                                                Width="5"
+                                                Height="5"
+                                                Background="#FF00FF"
+                                                CornerRadius="5" />
+                                            <!--  第二列  -->
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Foreground="#99ffffff"
+                                                Text="{Binding StuffName}" />
+                                            <!--  第三列  -->
+                                            <TextBlock
+                                                Grid.Column="2"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Foreground="#99ffffff"
+                                                Text="{Binding Position}" />
+                                            <!--  第三列  -->
+                                            <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                                <Border
+                                                    Width="{Binding ShowWidth}"
+                                                    Height="3"
+                                                    Margin="5,0"
+                                                    Background=" #40E0D0" />
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    Foreground="#FFE1FF"
+                                                    Text="{Binding OutWorkCount}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
             </UniformGrid>
         </Grid>
+
+        <!--  第三行  -->
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding WorkShopList}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Margin="10,5"
+                        Background="#01a8aabd"
+                        BorderBrush="#00FFFF"
+                        BorderThickness="0,1,0,0">
+                        <Grid>
+                            <!--  布局为两行两列  -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <!--  第一行第一列  -->
+                            <TextBlock
+                                Margin="5,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Foreground="#FFC1C1"
+                                Text="{Binding WorkShopName}" />
+                            <!--  第一行第二列  -->
+                            <TextBlock
+                                Grid.Column="1"
+                                Margin="5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+                                <Hyperlink Foreground="#FF6347" TextDecorations="None">[详情]</Hyperlink>
+                            </TextBlock>
+                            <!--  第二行第一列  -->
+                            <StackPanel
+                                Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    FontSize="15"
+                                    Foreground="#FFFFE0"
+                                    Text="机台总数" />
+                                <TextBlock
+                                    Margin="0,10"
+                                    HorizontalAlignment="Center"
+                                    FontSize="20"
+                                    Foreground="#FAFAD2"
+                                    Text="{Binding TotalCount}" />
+                            </StackPanel>
+                            <!--  第二行第二列  -->
+                            <UniformGrid Grid.Row="1" Grid.Column="1">
+                                <StackPanel>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="15"
+                                        Foreground="#00FA9A"
+                                        Text="{Binding WorkingCount}" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="10"
+                                        Foreground="#55ffffff"
+                                        Text="作业" />
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="15"
+                                        Foreground="#EEEE00"
+                                        Text="{Binding WaitCount}" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="10"
+                                        Foreground="#55ffffff"
+                                        Text="等待" />
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="15"
+                                        Foreground="#FF6347"
+                                        Text="{Binding WrongCount}" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="10"
+                                        Foreground="#55ffffff"
+                                        Text="故障" />
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="15"
+                                        Foreground="#8B8682"
+                                        Text="{Binding StopCount}" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="10"
+                                        Foreground="#55ffffff"
+                                        Text="停止" />
+                                </StackPanel>
+                            </UniformGrid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>
