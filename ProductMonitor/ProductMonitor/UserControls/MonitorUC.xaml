@@ -730,7 +730,12 @@
                                 Margin="5,0"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center">
-                                <Hyperlink Foreground="#FF6347" TextDecorations="None">[详情]</Hyperlink>
+                                <Hyperlink
+                                    Command="{Binding ShowDetailICmm, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    Foreground="#FF6347"
+                                    TextDecorations="None">
+                                    [详情]
+                                </Hyperlink>
                             </TextBlock>
                             <!--  第二行第一列  -->
                             <StackPanel
