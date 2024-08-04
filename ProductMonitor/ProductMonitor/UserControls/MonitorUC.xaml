@@ -248,6 +248,7 @@
                 Margin="20,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
+                Command="{Binding ShowSettingCmm, RelativeSource={RelativeSource AncestorType=Window}}"
                 Content="配置"
                 Style="{StaticResource BtnStyle}"
                 Tag="&#xe625;" />

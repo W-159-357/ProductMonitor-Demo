@@ -53,6 +53,14 @@
             "LiveCharts.Wpf": {
               "target": "Package",
               "version": "[0.9.7, )"
+            },
+            "NModbus4": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "System.IO.Ports": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +13,7 @@ using System.Windows.Shapes;
 using ProductMonitor.OpCommand;
 using ProductMonitor.UserControls;
 using ProductMonitor.ViewModel;
+using ProductMonitor.Views;
 
 namespace ProductMonitor
 {
@@ -33,6 +35,7 @@ namespace ProductMonitor
         // 显示车间详情
         private void ShowDetailUC()
         {
+            // 跳转到详情页面
             WorkShopDetailUC workShopDetailUC = new WorkShopDetailUC();
             mainWindowVM.MonitorUC = workShopDetailUC;
 
@@ -58,5 +61,59 @@ namespace ProductMonitor
         {
             get { return new Command(ShowDetailUC); }
         }
+
+        // 返回按钮(返回首页)
+        private void GoBack()
+        {
+            MonitorUC monitor = new MonitorUC();
+            mainWindowVM.MonitorUC = monitor;
+        }
+
+        // 返回首页命令
+        public Command GoBackCmm
+        {
+            get { return new Command(GoBack); }
+        }
+
+        // 最小化
+        private void BtnMinimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        // 最大化
+        private void BtnMaximize(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = WindowState.Normal;
+            }
+        }
+
+        // 关闭
+        private void btnClone(object sender, RoutedEventArgs e)
+        {
+            this.Close();       // 关闭窗口
+            Environment.Exit(0);    // 关闭应用
+        }
+
+        #region 弹出配置窗口
+        // 显示配置窗口
+        private void ShowSettingWin()
+        {
+            // 父子关系
+            SettingsWin settingsWin = new SettingsWin() { Owner = this };
+            settingsWin.ShowDialog();
+        }
+        // 创建 弹出配置窗口命令
+        public Command ShowSettingCmm
+        {
+            get { return new Command(ShowSettingWin); }
+        }
+        #endregion
     }
 }

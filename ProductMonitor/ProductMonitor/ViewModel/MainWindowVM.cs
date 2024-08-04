@@ -26,6 +26,7 @@ namespace ProductMonitor.ViewModel
             raderList:          雷达属性
             stuffOutWorkList:   缺岗员工数据
             workShopList:       车间属性
+            machineList:        机台属性
          */
         public event PropertyChangedEventHandler? PropertyChanged;
         // 监控用户控件   (定义为 monitorUC  方便进行里氏替换)
@@ -39,6 +40,7 @@ namespace ProductMonitor.ViewModel
         private List<RaderModel> raderList;
         private List<StuffOutWrokModel> stuffOutWorkList;
         private List<WorkShopModel> workShopList;
+        private List<MachineModel> machineList;
 
         // 视图模型构造函数
         public MainWindowVM()
@@ -100,7 +102,25 @@ namespace ProductMonitor.ViewModel
             WorkShopList.Add(new WorkShopModel { WorkShopName = "贴片车间", WorkingCount = 67, WaitCount = 31, WrongCount = 5, StopCount = 4 });
             WorkShopList.Add(new WorkShopModel { WorkShopName = "生产车间", WorkingCount = 82, WaitCount = 13, WrongCount = 6, StopCount = 2 });
             #endregion
+
+            #region 机台属性数据
+            machineList = new List<MachineModel>();
+            Random random = new Random();
+            for (int i = 0; i < 100; i++)
+            {
+                int plan = random.Next(100, 1000);
+                int finish = random.Next(100, plan);
+                machineList.Add(new MachineModel
+                {
+                    MachineName = "焊接机" + (i + 1),
+                    FinishedCount = finish,
+                    PlanCount = plan,
+                    Status = "作业中",
+                    OrderNo = "H202407151" + finish.ToString()
+                });
+            }
         }
+        #endregion
 
         public UserControl MonitorUC
         {
@@ -279,6 +299,21 @@ namespace ProductMonitor.ViewModel
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("WorkShopList"));
+                }
+            }
+        }
+        #endregion
+
+        #region 机台属性集合
+        public List<MachineModel> MachineList
+        {
+            get { return machineList; }
+            set
+            {
+                machineList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("MachineList"));
                 }
             }
         }
