@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using ProductMonitor.Models;
+using System.IO.Ports;
 
 namespace ProductMonitor.ViewModel
 {
@@ -54,6 +55,27 @@ namespace ProductMonitor.ViewModel
             enviromentList.Add(new EnviromentModel { EnItemName = "PM2.5(m³)", EnItemValue = 17 });
             enviromentList.Add(new EnviromentModel { EnItemName = "硫化氢(PPM)", EnItemValue = 14 });
             enviromentList.Add(new EnviromentModel { EnItemName = "氮气(PPM)", EnItemValue = 19 });
+            #endregion
+
+            #region 从设备读取环境监控数据(异步)
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    using (SerialPort serialPort = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One))
+                    {
+                        serialPort.Open();
+                        var master = Modbus.Device.ModbusSerialMaster.CreateRtu(serialPort);
+
+                        // 功能吗03
+                        ushort[] value = master.ReadHoldingRegisters(1, 0, 7);  // 从设备地址    寄存器起始地址     寄存器个数
+                        for (int i = 0; i < 7; i++)
+                        {
+                            EnviromentList[i].EnItemValue = value[i];
+                        }
+                    }
+                }
+            });
             #endregion
 
             #region 初始化报警列表

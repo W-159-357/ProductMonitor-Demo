@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\src\CSharp_Learn\CSharp-Project\ProductMonitor-Demo\ProductMonitor\ProductMonitor\App.xaml
-9885300874
+10-395964458
 
-21-1085950464
+221787038053
 198-2078217884
-Dictionary\BtnStyleDic.xaml;Dictionary\OperatorBtnStyleDic.xaml;MainWindow.xaml;UserControls\MonitorUC.xaml;UserControls\RaderUC.xaml;UserControls\RingUC.xaml;UserControls\WorkShopDetailUC.xaml;Views\SettingsPage.xaml;Views\SettingsWin.xaml;
+Dictionary\BtnStyleDic.xaml;Dictionary\OperatorBtnStyleDic.xaml;MainWindow.xaml;UserControls\MonitorUC.xaml;UserControls\RaderUC.xaml;UserControls\RingUC.xaml;UserControls\WorkShopDetailUC.xaml;Views\ModbusTest.xaml;Views\SettingsPage.xaml;Views\SettingsWin.xaml;
 
-True
+False
 
